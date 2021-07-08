@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres
+    container_name: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=django_user
+      - POSTGRES_PASSWORD=django_password
+      - POSTGRES_DB=poll
+    ports:
+      - 5432:5432
+  django_web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:7006
+    ports:
+      - '7006:7006'
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
