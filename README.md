@@ -43,6 +43,7 @@
     ```bash
     docker-compose run django_web /usr/local/bin/python manage.py createsuperuser
     ```
+P.S. Для работы api требуется docker и docker-compose.
 
 ### Использование
 
